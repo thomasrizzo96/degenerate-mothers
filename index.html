@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Degenerate Mothers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Archivo:wght@400;600;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a show-flyer stack — giant name, sticker tagline, then ticket-stub sections down one column */
+:root{
+  --paper:#f6f1f3; --ink:#18121a; --muted:#6b5d68; --pink:#ff2f86; --yellow:#ffe14a; --line:#e2d6dc; --card:#ffffff;
+  --display:"Bowlby One", Impact, "Arial Black", sans-serif;
+  --body:"Archivo", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#151016;--ink:#f6edf2;--muted:#b4a3ae;--pink:#ff4b97;--yellow:#ffe14a;--line:#352a33;--card:#1e1720;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#151016;--ink:#f6edf2;--muted:#b4a3ae;--pink:#ff4b97;--yellow:#ffe14a;--line:#352a33;--card:#1e1720;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:grid;gap:56px}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,13vw,128px);line-height:.88;margin:12px 0 0;letter-spacing:-.01em;text-wrap:balance}
+h1 span{color:var(--pink)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1;margin:0 0 18px;text-wrap:balance}
+.hero{position:relative;display:grid;gap:20px}
+.sticker{justify-self:start;background:var(--yellow);color:#18121a;font-family:var(--display);font-size:clamp(16px,3vw,22px);padding:10px 16px;transform:rotate(-2.5deg);box-shadow:4px 4px 0 var(--ink)}
+.hero p{max-width:60ch;margin:0;font-size:19px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;padding:12px 18px;border:2px solid var(--ink);background:var(--card);box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn.primary{background:var(--pink);color:#fff;border-color:var(--ink)}
+.single{border:2px solid var(--ink);background:var(--card);padding:22px;display:grid;gap:6px;box-shadow:6px 6px 0 var(--pink)}
+.single strong{font-family:var(--display);font-weight:400;font-size:clamp(26px,5vw,38px);line-height:1.05}
+.bio p{max-width:65ch;margin:0 0 14px}
+.members{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.member{border-top:3px solid var(--pink);padding-top:10px}
+.member b{display:block;font-size:19px}
+.member small{font-family:var(--mono);color:var(--muted);font-size:13px}
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.vid{display:grid;gap:4px;text-decoration:none;border:2px solid var(--ink);padding:16px;background:var(--card)}
+.vid:hover{background:var(--yellow);color:#18121a}
+.vid b{font-size:18px}
+.vid span{font-family:var(--mono);font-size:13px}
+.shows{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+td{padding:12px 10px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td.date{font-family:var(--mono);font-size:14px;white-space:nowrap;color:var(--muted)}
+td.venue b{display:block}
+td.venue small{color:var(--muted)}
+.tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border:1.5px solid var(--ink);white-space:nowrap}
+.tag.head{background:var(--pink);color:#fff;border-color:var(--pink)}
+.disco{display:grid;gap:14px}
+.rel{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
+.rel .yr{font-family:var(--mono);color:var(--muted);font-size:14px}
+.rel b{font-size:20px}
+.rel p{grid-column:2;margin:0;color:var(--muted)}
+.contact{border:2px solid var(--ink);padding:22px;display:grid;gap:14px;background:var(--card)}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.email{font-family:var(--mono);font-size:16px;user-select:all;word-break:break-all}
+button{font:inherit;font-weight:800;font-size:14px;cursor:pointer;padding:8px 12px;border:2px solid var(--ink);background:var(--yellow);color:#18121a}
+footer{font-family:var(--mono);font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Pop punk · Treasure Valley, Idaho</div>
+    <h1>Degenerate <span>Mothers</span></h1>
+    <p>Anthemic pop punk with an easycore streak: big singalong choruses and bouncy riffs.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://open.spotify.com/artist/5O5UWjW8PgIIiDQ1frlKiD" target="_blank" rel="noopener">Spotify</a>
+      <a class="btn" href="https://music.apple.com/us/artist/degenerate-mothers/1686018289" target="_blank" rel="noopener">Apple Music</a>
+      <a class="btn" href="https://instagram.com/degeneratemothersband" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://drive.google.com/file/d/1QVsAfyJ4xZzQxtqbeAJGWksyHKrCdxSw/view" target="_blank" rel="noopener">Press kit (PDF)</a>
+    </div>
+  </header>
+
+  <section class="single" aria-label="New single">
+    <div class="eyebrow">Out now · first single from the new EP</div>
+    <strong>"I Still Remember"</strong>
+    <div>Produced with Dale Hiscock. More singles rolling out through early 2027.</div>
+    <div class="btns" style="margin-top:8px"><a class="btn primary" href="https://open.spotify.com/artist/5O5UWjW8PgIIiDQ1frlKiD" target="_blank" rel="noopener">Listen on Spotify</a></div>
+  </section>
+
+  <section class="bio">
+    <h2>About</h2>
+    <p>Degenerate Mothers play anthemic pop punk with an easycore streak: big singalong choruses, bouncy riffs, and a live show that earned them a headline slot at Boise's Knitting Factory on May 17, 2025. The Treasure Valley three-piece has spent four years building a following on the local circuit.</p>
+    <p>They're currently working with Boise producer Dale Hiscock on their upcoming EP, rolling out single by single through early 2027. The first, "I Still Remember," is out now.</p>
+    <div class="members">
+      <div class="member"><b>Scott Barnes</b><small>Vocals · Bass</small></div>
+      <div class="member"><b>Joel Anderson</b><small>Guitar</small></div>
+      <div class="member"><b>Thomas Rizzo</b><small>Drums · Vocals</small></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Watch us live</h2>
+    <div class="vids">
+      <a class="vid" href="https://youtu.be/_R07BUBIDf4" target="_blank" rel="noopener"><b>Live set</b><span>YouTube ↗</span></a>
+      <a class="vid" href="https://youtube.com/shorts/fqfM7J60umM" target="_blank" rel="noopener"><b>Live clip</b><span>YouTube Shorts ↗</span></a>
+      <a class="vid" href="https://youtube.com/clip/UgkxS6-_zQOxhuqUhS8eoQcIyKF05eaqBaCP" target="_blank" rel="noopener"><b>Live clip 2</b><span>YouTube ↗</span></a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Live history</h2>
+    <div class="shows">
+      <table>
+        <tbody>
+          <tr><td class="date">2025.07.24</td><td class="venue"><b>Wylie Records</b><small>Garden City, ID · with All Hype &amp; Winter Forever</small></td><td><span class="tag">Multi-band bill</span></td></tr>
+          <tr><td class="date">2025.05.17</td><td class="venue"><b>Knitting Factory</b><small>Boise, ID</small></td><td><span class="tag head">Headliner</span></td></tr>
+          <tr><td class="date">2025.05.02</td><td class="venue"><b>The Shredder</b><small>Boise, ID · Hand Me the Knife headlined</small></td><td><span class="tag">Support</span></td></tr>
+          <tr><td class="date">2025.03.05</td><td class="venue"><b>Mad Swede Brew Hall</b><small>Boise, ID · Lake Drive headlined</small></td><td><span class="tag">Support</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Releases</h2>
+    <div class="disco">
+      <div class="rel"><span class="yr">2026</span><b>"I Still Remember"</b><p>Single · first from the upcoming EP</p></div>
+      <div class="rel"><span class="yr">2024</span><b>OUCH! EP</b><p>Sad Boi · Down · Apologies · Real Friends</p></div>
+      <div class="rel"><span class="yr">2023</span><b>"Cough Syrup"</b><p>Single · 1,300+ Spotify streams</p></div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2 style="margin:0">Booking &amp; contact</h2>
+    <div>Instagram DM is fastest: <a href="https://instagram.com/degeneratemothersband" target="_blank" rel="noopener">@degeneratemothersband</a></div>
+    <div class="row"><span class="email" id="email">degeneratemothers@gmail.com</span><button id="copy" type="button">Copy email</button></div>
+  </section>
+
+  <footer>Degenerate Mothers · Boise, Idaho</footer>
+</div>
+
+<script>
+document.getElementById('copy').addEventListener('click', function(){
+  var b=this, t=document.getElementById('email').textContent;
+  function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email'},1600)}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected — press copy'}
+  try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+});
+</script>
+</body>
+</html>
